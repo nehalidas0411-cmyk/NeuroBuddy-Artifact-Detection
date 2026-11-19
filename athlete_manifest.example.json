@@ -1,0 +1,10 @@
+{
+  "team_id": "team-example",
+  "athlete_id": "athlete-example",
+  "baseline_inputs": [
+    "data/baseline_round_1.set",
+    "data/baseline_round_2.set",
+    "data/baseline_round_3.set"
+  ],
+  "test_input": "data/testing_round_1.set"
+}

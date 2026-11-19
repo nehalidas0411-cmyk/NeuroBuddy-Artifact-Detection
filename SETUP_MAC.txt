@@ -1,0 +1,39 @@
+NEURO-BUDDY V2 v0.4.0 | MAC SETUP
+
+1. Double-click the downloaded ZIP to extract it.
+2. In Finder, locate the extracted folder named Neurobuddy_V2_v0.4.0.
+3. Open Terminal and type cd followed by a space. Drag the folder into Terminal, press Enter.
+
+OR run these commands if extracted into Downloads:
+
+cd ~/Downloads/Neurobuddy_V2_v0.4.0
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m pytest -q tests
+
+To run an EEG by choosing the .set file from Finder:
+
+python -m neurobuddy_v2 \
+  "$(osascript -e 'POSIX path of (choose file with prompt "Select your EEG .set file")')" \
+  --output reports --chunk-seconds 60
+
+To open a generated report:
+open reports/report.html
+
+IF THE .SET NEEDS AN .FDT: Keep the exact external .fdt next to the .set.
+FOR SLEEP HYPNOGRAM: Include the PSGScoring_events.tsv and its task-specific JSON staging dictionary.
+
+Large overnight .fdt recordings automatically use bounded-memory streaming at ~256 MiB.
+This is a research implementation, not a clinical diagnostic system.
+
+NEW IN V0.5.0: To enable automatic sleep staging, spindles, and slow waves,
+install the additional YASA dependencies after activating .venv:
+    python -m pip install -r requirements-sleep.txt
+
+Run a large sleep recording:
+    python -m neurobuddy_v2 /path/to/recording.set --output reports/sleep --chunk-seconds 60 --sleep-staging if_missing
+
+The .fdt filename must match the .set file's internal reference. Keep the
+sleep-scoring .tsv and JSON dictionary in the BIDS folder when available.

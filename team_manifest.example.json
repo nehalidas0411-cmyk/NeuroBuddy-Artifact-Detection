@@ -1,0 +1,15 @@
+{
+  "team_id": "team-example",
+  "athletes": [
+    {
+      "athlete_id": "athlete-01",
+      "baseline_inputs": ["team_data/athlete-01/baseline-1.set", "team_data/athlete-01/baseline-2.set", "team_data/athlete-01/baseline-3.set"],
+      "test_input": "team_data/athlete-01/test.set"
+    },
+    {
+      "athlete_id": "athlete-02",
+      "baseline_inputs": ["team_data/athlete-02/baseline-1.set", "team_data/athlete-02/baseline-2.set", "team_data/athlete-02/baseline-3.set"],
+      "test_input": "team_data/athlete-02/test.set"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "neurobuddy-v2"
+version = "0.6.0"
+description = "Explainable EEG task routing, shared EEG + IONM analysis and portable interactive reports"
+requires-python = ">=3.10"
+dependencies = ["mne>=1.8,<2", "numpy>=1.26", "scipy>=1.11", "matplotlib>=3.8", "pandas>=2.0", "jsonschema>=4.21"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+sleep = ["yasa>=0.8.1,<0.9", "lightgbm>=4", "antropy>=0.1"]
+
+[tool.setuptools.packages.find]
+include = ["neurobuddy_v2*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.setuptools.package-data]
+neurobuddy_v2 = ["*.json"]

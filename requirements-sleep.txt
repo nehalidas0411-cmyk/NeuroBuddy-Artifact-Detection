@@ -1,0 +1,5 @@
+-r requirements.txt
+# Optional, published sleep staging and microstructure algorithms
+yasa>=0.8.1,<0.9
+lightgbm>=4
+antropy>=0.1

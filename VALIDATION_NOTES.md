@@ -1,0 +1,9 @@
+# Validation log: v0.5.1 real-sleep excerpt integration
+
+**Test results:** 23 existing/new unit and integration tests passed. The tests include a regression test that reads ds005207-style numeric staging codes 4/5/2 from a TSV, decodes them via the official-style JSON dictionary to N2/N3/REM, and checks that the Sleep pathway and scored hypnogram are generated.
+
+**Synthetic engineering fixture:** To test handling the exact supplied ds005207 subject 003 `.set` metadata, the validation environment used a temporary **sparse external `.fdt` populated with synthetic EEG-like signal**. This is NOT the real ds005207 signal. The extractor generated an embedded self-contained 10-minute `.set` (about 7.8 MiB); readback of a test segment exactly matched the input signal. The pipeline produced both an unscored partial report and, with simulated documented-style sleep annotations, a complete scored report with hypnogram and stage-power figures.
+
+**Not yet validated:** No authentic subject 003 external `.fdt` was provided or fetched into this environment. Consequently no real sleep signal analysis has been performed, and YASA has not been installed/run here. The user must run this utility locally against their original `.set` + `.fdt` for a genuine excerpt/report. The companion PSGScoring TSV is required for human-scored stage statistics. A bundled verified OpenNeuro JSON dictionary provides code meanings, but does not substitute for stage timings. No claims are made about spindles, slow waves or auto-scoring accuracy.
+
+**Risk management:** The utility uses lazy loading and reads only a 10–20-minute segment, then embeds the extracted values in a standalone `.set`, avoiding re-upload of the full-night FDT. Stage events are clipped and re-referenced to the new time origin. The report's partial state is expected if scored stages are absent and automated staging is unavailable. Full-night architecture metrics must not be inferred from this sample.

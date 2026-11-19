@@ -1,0 +1,42 @@
+﻿# Python environment
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# EEG recordings and datasets
+*.edf
+*.bdf
+*.fif
+*.fdt
+*.set
+*.vhdr
+*.vmrk
+*.eeg
+*.cnt
+*.gdf
+*.npy
+*.npz
+
+# Generated results
+reports/
+outputs/
+results/
+artifacts/
+*.zip
+
+# Editor and OS files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Python package metadata
+*.egg-info/
+build/
+dist/
